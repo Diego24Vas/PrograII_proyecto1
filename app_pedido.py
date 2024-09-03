@@ -1,15 +1,9 @@
 import customtkinter as ctk
 from tkinter import ttk
-
-
 from Ingredientes import Ingredientes
-
-
-
 from Inventario import Inventario
 import re
 from CTkMessagebox import CTkMessagebox
-print("Hola mundo")
 
 class AplicacionConPestanas(ctk.CTk):
     def __init__(self):
@@ -69,7 +63,7 @@ class AplicacionConPestanas(ctk.CTk):
 
         # Botón para eliminar libro arriba del Treeview
         self.boton_eliminar = ctk.CTkButton(frame_treeview, text="Eliminar Ingrediente", fg_color="black", text_color="white")
-        self.boton_eliminar.configure(command=self.eliminar_libro)
+        self.boton_eliminar.configure(command=self.eliminar_ingrediente)
         self.boton_eliminar.pack(pady=10)
 
         # Botón para generar el menu
@@ -131,32 +125,32 @@ class AplicacionConPestanas(ctk.CTk):
             return
 
         
-        # Crear una instancia de Libro
+        # Crear una instancia de ingrediente
         ingrediente = Ingredientes(nombre,cantidad)
         
 
         # Agregar el libro a la biblioteca
-        if self.ingrediente.agregar_ingrediente(ingrediente):
+        if self.inventario.agregar_ingediente(ingrediente):
             self.actualizar_treeview()
 
         else:
-            CTkMessagebox(title="Error", message="El libro ya existe en la biblioteca.", icon="warning")
+            CTkMessagebox(title="Error", message="El Ingrediente ya existe en el inventario.", icon="warning")
         
 
-    def eliminar_libro(self):
+    def eliminar_ingrediente(self):
         seleccion = self.tree.selection()
         if not seleccion:
-            CTkMessagebox(title="Error", message="Por favor selecciona un libro para eliminar.", icon="warning")
+            CTkMessagebox(title="Error", message="Por favor selecciona un ingredrediente para eliminar.", icon="warning")
             return
 
         item = self.tree.item(seleccion)
         nombre = item['values'][0]
 
-        # Eliminar el libro de la biblioteca
-        if self.ingrediente.eliminar_libro(nombre):
+        # Eliminar el ingrediente de inventario
+        if self.inventario.eliminar_ingrediente(nombre):
             self.actualizar_treeview()
         else:
-            CTkMessagebox(title="Error", message="El libro no se pudo eliminar.", icon="warning")
+            CTkMessagebox(title="Error", message="El Ingrediente no se pudo eliminar.", icon="warning")
 
     def actualizar_treeview(self):
         # Limpiar el Treeview actual
@@ -164,8 +158,8 @@ class AplicacionConPestanas(ctk.CTk):
             self.tree.delete(item)
 
         # Agregar todos los libros de la biblioteca al Treeview
-        for libro in self.ingrediente.obtener_libros():
-            self.tree.insert("", "end", values=(libro.nombre, libro.autor, libro.categoria, libro.cantidad))
+        for ingrediente in self.inventario.obtener_ingredientes():
+            self.tree.insert("", "end", values=(ingrediente.nombre, ingrediente.cantidad))
 
 
 if __name__ == "__main__":
