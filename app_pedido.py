@@ -9,6 +9,7 @@ from Ingredientes import Ingredientes
 from Inventario import Inventario
 import re
 from CTkMessagebox import CTkMessagebox
+print("Hola mundo")
 
 class AplicacionConPestanas(ctk.CTk):
     def __init__(self):
