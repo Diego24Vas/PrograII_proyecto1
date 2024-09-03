@@ -10,7 +10,7 @@ class AplicacionConPestanas(ctk.CTk):
         super().__init__()
 
         # Configuración de la ventana principal
-        self.title("Biblioteca")
+        self.title("Mcdonals")
         self.geometry("1200x700")
 
         # Inicializar la Biblioteca
