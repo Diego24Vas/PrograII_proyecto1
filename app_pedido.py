@@ -80,9 +80,6 @@ class AplicacionConPestanas(ctk.CTk):
         tarjetas_frame = ctk.CTkFrame(self.tab2)
         tarjetas_frame.pack(side ="top", fill="both", padx=10, pady=10)
 
-
-
-
         frame_treeview2 = ctk.CTkFrame(self.tab2)
         frame_treeview2.pack(side="bottom", fill="both", expand=True, padx=10, pady=10)
 
@@ -112,10 +109,8 @@ class AplicacionConPestanas(ctk.CTk):
 
 
     def ingresar_ingrediente(self):
-
         nombre = self.entry_ingediente.get()
         cantidad = self.entry_cantidad.get()
-
         
         # Validar entradas
         if not self.validar_nombre(nombre):
@@ -127,12 +122,10 @@ class AplicacionConPestanas(ctk.CTk):
         
         # Crear una instancia de ingrediente
         ingrediente = Ingredientes(nombre,cantidad)
-        
 
         # Agregar el libro a la biblioteca
         if self.inventario.agregar_ingediente(ingrediente):
             self.actualizar_treeview()
-
         else:
             CTkMessagebox(title="Error", message="El Ingrediente ya existe en el inventario.", icon="warning")
         
@@ -160,6 +153,9 @@ class AplicacionConPestanas(ctk.CTk):
         # Agregar todos los libros de la biblioteca al Treeview
         for ingrediente in self.inventario.obtener_ingredientes():
             self.tree.insert("", "end", values=(ingrediente.nombre, ingrediente.cantidad))
+
+    for item in tree.get_children():
+        print(tree.item(item)["values"])
 
 
 if __name__ == "__main__":
