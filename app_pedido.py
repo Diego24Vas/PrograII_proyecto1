@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from tkinter import ttk
-from Ingredientes import Ingredientes
-from Inventario import Inventario
+from Class.Ingredientes import Ingredientes
+from Class.Inventario import Inventario
 import re
 from CTkMessagebox import CTkMessagebox
 
