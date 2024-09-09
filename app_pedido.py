@@ -1,9 +1,10 @@
 import customtkinter as ctk
 from tkinter import ttk
-from Class.Ingredientes import Ingredientes
-from Class.Inventario import Inventario
+from Ingredientes import Ingredientes
+from Inventario import Inventario
 import re
 from CTkMessagebox import CTkMessagebox
+from PIL import Image
 
 class AplicacionConPestanas(ctk.CTk):
     def __init__(self):
@@ -80,6 +81,33 @@ class AplicacionConPestanas(ctk.CTk):
         tarjetas_frame = ctk.CTkFrame(self.tab2)
         tarjetas_frame.pack(side ="top", fill="both", padx=10, pady=10)
 
+        # Cargar la imagen
+        image_Bebida = ctk.CTkImage(Image.open("IMG/Comida1.png"), size=(100, 100))
+        # Crear un botón con imagen
+        self.boton_Bebida = ctk.CTkButton(tarjetas_frame, image=image_Bebida, text="",width=100, height=50)
+        self.boton_Bebida.pack(side="left", padx=10, pady=10)
+
+        # Cargar la imagen
+        image_Hamburguesa = ctk.CTkImage(Image.open("IMG/Comida2.png"), size=(100, 100))
+        # Crear un botón con imagen
+        self.boton_Hamburguesa = ctk.CTkButton(tarjetas_frame, image=image_Hamburguesa, text="", width=100, height=50)
+        self.boton_Hamburguesa.pack(side="left", padx=10, pady=10)
+
+        # Cargar la imagen
+        image_Hotdog = ctk.CTkImage(Image.open("IMG/Comida3.png"), size=(100, 100))
+        # Crear un botón con imagen
+        self.boton_Hotdog = ctk.CTkButton(tarjetas_frame, image=image_Hotdog, text="", width=100, height=50)
+        self.boton_Hotdog.pack(side="left", padx=10, pady=10)
+
+        # Cargar la imagen
+        image_Papas = ctk.CTkImage(Image.open("IMG/Comida4.png"), size=(100, 100))
+        # Crear un botón con imagen
+        self.boton_Papas = ctk.CTkButton(tarjetas_frame, image=image_Papas, text="", width=100, height=50)
+        self.boton_Papas.pack(side="left", padx=10, pady=10)
+
+
+        
+
         frame_treeview2 = ctk.CTkFrame(self.tab2)
         frame_treeview2.pack(side="bottom", fill="both", expand=True, padx=10, pady=10)
 
@@ -154,8 +182,8 @@ class AplicacionConPestanas(ctk.CTk):
         for ingrediente in self.inventario.obtener_ingredientes():
             self.tree.insert("", "end", values=(ingrediente.nombre, ingrediente.cantidad))
 
-    for item in tree.get_children():
-        print(tree.item(item)["values"])
+    """for item in tree.get_children():
+        print(tree.item(item)["values"])"""
 
 
 if __name__ == "__main__":
