@@ -115,8 +115,6 @@ class AplicacionConPestanas(ctk.CTk):
         self.tree_pedido.heading("Precio", text="Precio Unitario")
         self.tree_pedido.pack(expand=True, fill="both", padx=10, pady=10)
 
-<<<<<<< HEAD
-
         # Botón para eliminar menu arriba del Treeview
         self.boton_Elimenu = ctk.CTkButton(frame_treeview2, text="Eliminar Menu", fg_color="black", text_color="white")
         self.boton_Elimenu.pack(pady=10)
@@ -124,8 +122,6 @@ class AplicacionConPestanas(ctk.CTk):
 
 
 
-=======
->>>>>>> origin/kevin
     def validar_nombre(self, nombre):
         if re.match(r"^[a-zA-Z\s]+$", nombre):
             return True
@@ -187,10 +183,10 @@ class AplicacionConPestanas(ctk.CTk):
         for ingrediente in self.inventario.obtener_ingredientes():
             self.tree.insert("", "end", values=(ingrediente.nombre, ingrediente.cantidad))
 
-<<<<<<< HEAD
+
     """for item in tree.get_children():
         print(tree.item(item)["values"])"""
-=======
+
     def generar_menu(self):
         # Limpiar los datos anteriores
         self.menu_datos.clear()
@@ -211,7 +207,6 @@ class AplicacionConPestanas(ctk.CTk):
         # Agregar los datos almacenados en self.menu_datos al Treeview de la segunda pestaña
         for dato in self.menu_datos:
             self.tree_pedido.insert("", "end", values=(dato[0], dato[1], "Precio a definir"))
->>>>>>> origin/kevin
 
 
 if __name__ == "__main__":
