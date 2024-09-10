@@ -2,6 +2,7 @@ import customtkinter as ctk
 from tkinter import ttk
 from Ingredientes import Ingredientes
 from Inventario import Inventario
+
 import re
 from CTkMessagebox import CTkMessagebox
 from PIL import Image
