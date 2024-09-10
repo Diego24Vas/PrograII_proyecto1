@@ -9,6 +9,5 @@ class Menu:
         # Verificar si los ingredientes están disponibles en el inventario
         if self.inventario.verificar_disponibilidad(self.ingredientes):
             self.inventario.consumir_ingredientes(self.ingredientes)
-            print(f"El menú '{self.nombre}' ha sido creado exitosamente!")
         else:
             print(f"No hay suficientes ingredientes para crear el menú '{self.nombre}'.")

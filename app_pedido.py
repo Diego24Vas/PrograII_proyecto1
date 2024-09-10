@@ -2,14 +2,12 @@ import customtkinter as ctk
 from tkinter import ttk
 from Ingredientes import Ingredientes
 from Inventario import Inventario
+from menu import Menu
 
 import re
 from CTkMessagebox import CTkMessagebox
-<<<<<<< HEAD
 from PIL import Image
-=======
-from menu import Menu
->>>>>>> origin/kevin
+
 
 class AplicacionConPestanas(ctk.CTk):
     def __init__(self):
@@ -23,7 +21,7 @@ class AplicacionConPestanas(ctk.CTk):
         self.inventario = Inventario()
 
         # Lista para almacenar los datos del menú
-        self.menu_datos = Menu[]
+        #self.menu_datos = Menu[]
 
         # Crear pestañas
         self.tabview = ctk.CTkTabview(self, width=600, height=500)
@@ -69,10 +67,7 @@ class AplicacionConPestanas(ctk.CTk):
         self.boton_eliminar.configure(command=self.eliminar_ingrediente)
         self.boton_eliminar.pack(pady=10)
 
-        # Botón para generar el menú
-        self.boton_menu = ctk.CTkButton(frame_treeview, text="Generar Menú")
-        self.boton_menu.configure(command=self.generar_menu)
-        self.boton_menu.pack(pady=10, side="bottom")
+
 
         # Treeview en el segundo frame
         self.tree = ttk.Treeview(frame_treeview, columns=("Ingrediente", "Cantidad"), show="headings")
@@ -87,28 +82,27 @@ class AplicacionConPestanas(ctk.CTk):
         # Cargar la imagen
         image_Bebida = ctk.CTkImage(Image.open("IMG/Comida1.png"), size=(100, 100))
         # Crear un botón con imagen
-        self.boton_Bebida = ctk.CTkButton(tarjetas_frame, image=image_Bebida, text="Bebida",width=100, height=50)
+        self.boton_Bebida = ctk.CTkButton(tarjetas_frame, image=image_Bebida, text="Bebida")
         self.boton_Bebida.pack(side="left", padx=10, pady=10)
 
         # Cargar la imagen
         image_Hamburguesa = ctk.CTkImage(Image.open("IMG/Comida2.png"), size=(100, 100))
         # Crear un botón con imagen
-        self.boton_Hamburguesa = ctk.CTkButton(tarjetas_frame, image=image_Hamburguesa, text="Hamburguesa", width=100, height=50)
+        self.boton_Hamburguesa = ctk.CTkButton(tarjetas_frame, image=image_Hamburguesa, text="Hamburguesa")
         self.boton_Hamburguesa.pack(side="left", padx=10, pady=10)
 
         # Cargar la imagen
         image_Hotdog = ctk.CTkImage(Image.open("IMG/Comida3.png"), size=(100, 100))
         # Crear un botón con imagen
-        self.boton_Hotdog = ctk.CTkButton(tarjetas_frame, image=image_Hotdog, text="Hotdog", width=100, height=50)
+        self.boton_Hotdog = ctk.CTkButton(tarjetas_frame, image=image_Hotdog, text="Hotdog")
         self.boton_Hotdog.pack(side="left", padx=10, pady=10)
 
         # Cargar la imagen
         image_Papas = ctk.CTkImage(Image.open("IMG/Comida4.png"), size=(100, 100))
         # Crear un botón con imagen
-        self.boton_Papas = ctk.CTkButton(tarjetas_frame, image=image_Papas, text="Papas", width=100, height=50)
+        self.boton_Papas = ctk.CTkButton(tarjetas_frame, image=image_Papas, text="Papas")
         self.boton_Papas.pack(side="left", padx=10, pady=10)
 
-    
         
 
         frame_treeview2 = ctk.CTkFrame(self.tab2)
@@ -121,7 +115,7 @@ class AplicacionConPestanas(ctk.CTk):
         self.tree_pedido.pack(expand=True, fill="both", padx=10, pady=10)
 
         # Botón para eliminar menu arriba del Treeview
-        self.boton_Elimenu = ctk.CTkButton(frame_treeview2, text="Eliminar Menu", fg_color="black", text_color="white")
+        self.boton_Elimenu = ctk.CTkButton(frame_treeview2, text="Eliminar Menu", fg_color="red", text_color="white")
         self.boton_Elimenu.pack(pady=10)
 
 
@@ -146,7 +140,7 @@ class AplicacionConPestanas(ctk.CTk):
         cantidad = self.entry_cantidad.get()
         self.entry_cantidad.delete(0, ctk.END)
         self.entry_ingrediente.delete(0, ctk.END)
-    
+
         # Validar entradas
         if not self.validar_nombre(nombre):
             return
@@ -155,7 +149,8 @@ class AplicacionConPestanas(ctk.CTk):
             return
 
         # Crear una instancia de ingrediente
-        ingrediente = Ingredientes(nombre, cantidad)
+        ingrediente = Ingredientes(nombre, int(cantidad))
+
 
         # Agregar el ingrediente al inventario
         if self.inventario.agregar_ingrediente(ingrediente):
@@ -188,7 +183,7 @@ class AplicacionConPestanas(ctk.CTk):
         for ingrediente in self.inventario.obtener_ingredientes():
             self.tree.insert("", "end", values=(ingrediente.nombre, ingrediente.cantidad))
 
-<<<<<<< HEAD
+
 
     """for item in tree.get_children():
         print(tree.item(item)["values"])"""
@@ -196,8 +191,6 @@ class AplicacionConPestanas(ctk.CTk):
     def generar_menu(self):
         # Limpiar los datos anteriores
         self.menu_datos.clear()
-=======
->>>>>>> origin/kevin
 
 
     def actualizar_treeview_pedido(self):
