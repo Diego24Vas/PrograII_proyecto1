@@ -10,7 +10,6 @@ class Inventario:
         self.lista_ingredientes.append(ingrediente)
         return True  # ingrediente agregado como nuevo
 
-    
     def eliminar_ingrediente(self, nombre_ingrediente):
         for ingr in self.lista_ingredientes:
             if ingr.nombre == nombre_ingrediente:
