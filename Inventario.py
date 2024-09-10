@@ -2,19 +2,21 @@ class Inventario:
     def __init__(self):
         self.lista_ingredientes = []
 
-    def agregar_ingediente(self, ingrediente):
+    def agregar_ingrediente(self, ingrediente):
+        for ingr in self.lista_ingredientes:
+            if ingr.nombre == ingrediente.nombre:
+                ingr.cantidad += ingrediente.cantidad
+                return True
         self.lista_ingredientes.append(ingrediente)
         return True  # ingrediente agregado como nuevo
 
-    def eliminar_ingrediente(self, nombre_ingrediente, cantidad=1):
+    def eliminar_ingrediente(self, nombre_ingrediente):
         for ingr in self.lista_ingredientes:
             if ingr.nombre == nombre_ingrediente:
                 self.lista_ingredientes.remove(ingr)
                 return True
-            else: 
-                return False
-
+        return False  # ingrediente no encontrado
 
 
     def obtener_ingredientes(self):
-        return [ingredientes for ingredientes in self.lista_ingredientes]
+        return [ingrediente for ingrediente in self.lista_ingredientes]
