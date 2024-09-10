@@ -1,6 +1,6 @@
 class Ingredientes:
     def __init__(self, nombre, cantidad):
-        self.nombre = nombre
+        self.nombre = nombre.lower()
         self.cantidad = cantidad
 
 
