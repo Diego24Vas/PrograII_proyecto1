@@ -4,6 +4,7 @@ from Ingredientes import Ingredientes
 from Inventario import Inventario
 import re
 from CTkMessagebox import CTkMessagebox
+from menu import Menu
 
 class AplicacionConPestanas(ctk.CTk):
     def __init__(self):
@@ -17,7 +18,7 @@ class AplicacionConPestanas(ctk.CTk):
         self.inventario = Inventario()
 
         # Lista para almacenar los datos del menú
-        self.menu_datos = []
+        self.menu_datos = Menu[]
 
         # Crear pestañas
         self.tabview = ctk.CTkTabview(self, width=600, height=500)
@@ -148,17 +149,7 @@ class AplicacionConPestanas(ctk.CTk):
         for ingrediente in self.inventario.obtener_ingredientes():
             self.tree.insert("", "end", values=(ingrediente.nombre, ingrediente.cantidad))
 
-    def generar_menu(self):
-        # Limpiar los datos anteriores
-        self.menu_datos.clear()
 
-        # Obtener todos los ingredientes del Treeview
-        for item in self.tree.get_children():
-            values = self.tree.item(item, "values")
-            self.menu_datos.append(values)
-
-        # Aquí podrías hacer algo más con los datos, como mostrarlos en la segunda pestaña
-        self.actualizar_treeview_pedido()
 
     def actualizar_treeview_pedido(self):
         # Limpiar el Treeview de la segunda pestaña
