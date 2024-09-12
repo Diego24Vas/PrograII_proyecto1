@@ -7,10 +7,7 @@ from menu import Menu
 import re
 from CTkMessagebox import CTkMessagebox
 from PIL import Image
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/kevin
 
 class AplicacionConPestanas(ctk.CTk):
     def __init__(self):
@@ -23,12 +20,10 @@ class AplicacionConPestanas(ctk.CTk):
         # Inicializar la Biblioteca
         self.inventario = Inventario()
 
-<<<<<<< HEAD
-        # Lista para almacenar los datos del menú
-        #self.menu_datos = Menu[]
 
-=======
->>>>>>> origin/kevin
+        # Lista para almacenar los datos del menú
+        self.menu_datos = Menu()
+
         # Crear pestañas
         self.tabview = ctk.CTkTabview(self, width=600, height=500)
         self.tabview.pack(padx=20, pady=20)
@@ -74,17 +69,17 @@ class AplicacionConPestanas(ctk.CTk):
         self.boton_eliminar.configure(command=self.eliminar_ingrediente)
         self.boton_eliminar.pack(pady=10)
 
-<<<<<<< HEAD
+
 
 
         # Treeview en el segundo frame
         self.tree = ttk.Treeview(frame_treeview, columns=("Ingrediente", "Cantidad"), show="headings")
         self.tree.heading("Ingrediente", text="Ingrediente")
-=======
+
         # Treeview para ingredientes
         self.tree = ttk.Treeview(frame_treeview, columns=("Ingediente", "Cantidad"), show="headings")
         self.tree.heading("Ingediente", text="Ingrediente")
->>>>>>> origin/kevin
+
         self.tree.heading("Cantidad", text="Cantidad")
         self.tree.pack(expand=True, fill="both", padx=10, pady=10)
 
@@ -92,34 +87,26 @@ class AplicacionConPestanas(ctk.CTk):
         tarjetas_frame = ctk.CTkFrame(self.tab2)
         tarjetas_frame.pack(side="top", fill="both", padx=10, pady=10)
 
-<<<<<<< HEAD
+
         # Cargar la imagen
         image_Bebida = ctk.CTkImage(Image.open("IMG/Comida1.png"), size=(100, 100))
         # Crear un botón con imagen
-        self.boton_Bebida = ctk.CTkButton(tarjetas_frame, image=image_Bebida, text="Bebida")
-        self.boton_Bebida.pack(side="left", padx=10, pady=10)
 
         # Cargar la imagen
         image_Hamburguesa = ctk.CTkImage(Image.open("IMG/Comida2.png"), size=(100, 100))
         # Crear un botón con imagen
-        self.boton_Hamburguesa = ctk.CTkButton(tarjetas_frame, image=image_Hamburguesa, text="Hamburguesa")
-        self.boton_Hamburguesa.pack(side="left", padx=10, pady=10)
 
         # Cargar la imagen
-        image_Hotdog = ctk.CTkImage(Image.open("IMG/Comida3.png"), size=(100, 100))
+        image_Completo = ctk.CTkImage(Image.open("IMG/Comida3.png"), size=(100, 100))
         # Crear un botón con imagen
-        self.boton_Hotdog = ctk.CTkButton(tarjetas_frame, image=image_Hotdog, text="Hotdog")
-        self.boton_Hotdog.pack(side="left", padx=10, pady=10)
 
         # Cargar la imagen
         image_Papas = ctk.CTkImage(Image.open("IMG/Comida4.png"), size=(100, 100))
         # Crear un botón con imagen
-        self.boton_Papas = ctk.CTkButton(tarjetas_frame, image=image_Papas, text="Papas")
-        self.boton_Papas.pack(side="left", padx=10, pady=10)
 
         
 
-=======
+
         self.precios = {
             "Papas Fritas": 500,
             "Pepsi": 1100,
@@ -129,27 +116,27 @@ class AplicacionConPestanas(ctk.CTk):
 
         # Botones con imágenes y asignación de pedidos
         image_Bebida = ctk.CTkImage(Image.open("IMG/Comida1.png"), size=(100, 100))
-        self.boton_Bebida = ctk.CTkButton(tarjetas_frame, image=image_Bebida, text="", width=100, height=50,
+        self.boton_Bebida = ctk.CTkButton(tarjetas_frame, image=image_Bebida, text="Pepsi", width=100, height=50,
                                           command=lambda: self.agregar_pedido("Pepsi"))
         self.boton_Bebida.pack(side="left", padx=10, pady=10)
 
         image_Hamburguesa = ctk.CTkImage(Image.open("IMG/Comida2.png"), size=(100, 100))
-        self.boton_Hamburguesa = ctk.CTkButton(tarjetas_frame, image=image_Hamburguesa, text="", width=100, height=50,
+        self.boton_Hamburguesa = ctk.CTkButton(tarjetas_frame, image=image_Hamburguesa, text="Hamburguesa", width=100, height=50,
                                                command=lambda: self.agregar_pedido("Hamburguesa"))
         self.boton_Hamburguesa.pack(side="left", padx=10, pady=10)
 
-        image_Hotdog = ctk.CTkImage(Image.open("IMG/Comida3.png"), size=(100, 100))
-        self.boton_Hotdog = ctk.CTkButton(tarjetas_frame, image=image_Hotdog, text="", width=100, height=50,
+        image_Completo = ctk.CTkImage(Image.open("IMG/Comida3.png"), size=(100, 100))
+        self.boton_Completo = ctk.CTkButton(tarjetas_frame, image=image_Completo, text="Completo", width=100, height=50,
                                           command=lambda: self.agregar_pedido("Completo"))
-        self.boton_Hotdog.pack(side="left", padx=10, pady=10)
+        self.boton_Completo.pack(side="left", padx=10, pady=10)
 
         image_Papas = ctk.CTkImage(Image.open("IMG/Comida4.png"), size=(100, 100))
-        self.boton_Papas = ctk.CTkButton(tarjetas_frame, image=image_Papas, text="", width=100, height=50,
+        self.boton_Papas = ctk.CTkButton(tarjetas_frame, image=image_Papas, text="Papas", width=100, height=50,
                                          command=lambda: self.agregar_pedido("Papas Fritas"))
         self.boton_Papas.pack(side="left", padx=10, pady=10)
 
         # Treeview para pedidos
->>>>>>> origin/kevin
+
         frame_treeview2 = ctk.CTkFrame(self.tab2)
         frame_treeview2.pack(side="bottom", fill="both", expand=True, padx=10, pady=10)
 
@@ -159,19 +146,22 @@ class AplicacionConPestanas(ctk.CTk):
         self.tree_pedido.heading("Precio", text="Precio Unitario")
         self.tree_pedido.pack(expand=True, fill="both", padx=10, pady=10)
 
-<<<<<<< HEAD
+
         # Botón para eliminar menu arriba del Treeview
         self.boton_Elimenu = ctk.CTkButton(frame_treeview2, text="Eliminar Menu", fg_color="red", text_color="white")
+        self.boton_Elimenu.configure(command=self.eliminar_ingrediente) 
         self.boton_Elimenu.pack(pady=10)
 
+        self.boton_pdf = ctk.CTkButton(frame_treeview2, text="Generar Boleta", fg_color="green", text_color="white")
+        self.boton_pdf.pack(pady=10)
 
 
-=======
+
+
     def agregar_pedido(self, pedido):
         precio = self.precios[pedido]
         cantidad = 1  # Puedes ajustar esto para que el usuario seleccione la cantidad
         self.tree_pedido.insert("", "end", values=(pedido, cantidad, precio))
->>>>>>> origin/kevin
 
     def validar_nombre(self, nombre):
         if re.match(r"^[a-zA-Z\s]+$", nombre):
@@ -190,11 +180,9 @@ class AplicacionConPestanas(ctk.CTk):
     def ingresar_ingrediente(self):
         nombre = self.entry_ingediente.get()
         cantidad = self.entry_cantidad.get()
-<<<<<<< HEAD
+
         self.entry_cantidad.delete(0, ctk.END)
-        self.entry_ingrediente.delete(0, ctk.END)
-=======
->>>>>>> origin/kevin
+        self.entry_ingediente.delete(0, ctk.END)
 
         # Validar entradas
         if not self.validar_nombre(nombre):
@@ -205,16 +193,45 @@ class AplicacionConPestanas(ctk.CTk):
 
         # Crear una instancia de ingrediente
         ingrediente = Ingredientes(nombre, int(cantidad))
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/kevin
-
-        # Agregar el ingrediente al inventario
         if self.inventario.agregar_ingrediente(ingrediente):
             self.actualizar_treeview()
+            self.actualizar_estado_menus()  # función para actualizar los menús según los ingredientes
+        
+
+
+    def actualizar_estado_menus(self):
+        # Diccionario con los ingredientes necesarios para cada menú
+        ingredientes_menus = {
+            "Pepsi":       {"bebida": 1},
+            "Hamburguesa": {"pan de hamburguesa": 1, "lámina de queso": 1, "churrasco de carne": 1},
+            "Completo":    {"vienesa": 1, "pan de completo": 1, "tomate": 1, "palta": 1},
+            "Papas Fritas":{"papas": 5}
+        }
+
+
+        # Verificar disponibilidad y habilitar/deshabilitar los botones según los ingredientes
+        if self.inventario.verificar_disponibilidad(ingredientes_menus["Pepsi"]):
+            self.boton_Bebida.configure(state="normal")
         else:
-            CTkMessagebox(title="Error", message="El Ingrediente ya existe en el inventario.", icon="warning")
+            self.boton_Bebida.configure(state="disabled")
+
+        if self.inventario.verificar_disponibilidad(ingredientes_menus["Hamburguesa"]):
+            self.boton_Hamburguesa.configure(state="normal")
+        else:
+            self.boton_Hamburguesa.configure(state="disabled")
+
+        if self.inventario.verificar_disponibilidad(ingredientes_menus["Completo"]):
+            self.boton_Completo.configure(state="normal")
+        else:
+            self.boton_Completo.configure(state="disabled")
+
+        if self.inventario.verificar_disponibilidad(ingredientes_menus["Papas Fritas"]):
+            self.boton_Papas.configure(state="normal")
+        else:
+            self.boton_Papas.configure(state="disabled")
+
+
 
     def eliminar_ingrediente(self):
         seleccion = self.tree.selection()
@@ -241,7 +258,7 @@ class AplicacionConPestanas(ctk.CTk):
             self.tree.insert("", "end", values=(ingrediente.nombre, ingrediente.cantidad))
 
 
-<<<<<<< HEAD
+
 
     """for item in tree.get_children():
         print(tree.item(item)["values"])"""
@@ -260,9 +277,6 @@ class AplicacionConPestanas(ctk.CTk):
         for dato in self.menu_datos:
             self.tree_pedido.insert("", "end", values=(dato[0], dato[1], "Precio a definir"))
 
-
-=======
->>>>>>> origin/kevin
 if __name__ == "__main__":
     ctk.set_appearance_mode("System")
     ctk.set_default_color_theme("blue")

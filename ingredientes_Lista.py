@@ -31,10 +31,10 @@ class AplicacionPedidos(ctk.CTk):
                                                command=lambda: self.agregar_pedido("Hamburguesa"))
         self.boton_Hamburguesa.pack(side="left", padx=10, pady=10)
 
-        image_Hotdog = ctk.CTkImage(Image.open("IMG/Comida3.png"), size=(100, 100))
-        self.boton_Hotdog = ctk.CTkButton(tarjetas_frame, image=image_Hotdog, text="", width=100, height=50,
+        image_Completo = ctk.CTkImage(Image.open("IMG/Comida3.png"), size=(100, 100))
+        self.boton_Completo = ctk.CTkButton(tarjetas_frame, image=image_Completo, text="", width=100, height=50,
                                           command=lambda: self.agregar_pedido("Completo"))
-        self.boton_Hotdog.pack(side="left", padx=10, pady=10)
+        self.boton_Completo.pack(side="left", padx=10, pady=10)
 
         image_Papas = ctk.CTkImage(Image.open("IMG/Comida4.png"), size=(100, 100))
         self.boton_Papas = ctk.CTkButton(tarjetas_frame, image=image_Papas, text="", width=100, height=50,
