@@ -3,11 +3,11 @@ from tkinter import ttk
 from Ingredientes import Ingredientes
 from Inventario import Inventario
 from menu import Menu
-
+from PDF import GeneradorPDF
+from fpdf import FPDF
 import re
 from CTkMessagebox import CTkMessagebox
 from PIL import Image
-
 
 class AplicacionConPestanas(ctk.CTk):
     def __init__(self):
@@ -20,10 +20,6 @@ class AplicacionConPestanas(ctk.CTk):
         # Inicializar la Biblioteca
         self.inventario = Inventario()
 
-
-        # Lista para almacenar los datos del menú
-        self.menu_datos = Menu()
-
         # Crear pestañas
         self.tabview = ctk.CTkTabview(self, width=600, height=500)
         self.tabview.pack(padx=20, pady=20)
@@ -35,7 +31,7 @@ class AplicacionConPestanas(ctk.CTk):
         self.tab1 = self.tabview.add("Ingreso de ingedientes")
         self.tab2 = self.tabview.add("Pedido")
 
-        # Configurar el contenido de la pestaña 1
+        # Configurar el contenido de las pestañas
         self.configurar_pestana1()
         self.configurar_pestana2()
 
@@ -69,17 +65,10 @@ class AplicacionConPestanas(ctk.CTk):
         self.boton_eliminar.configure(command=self.eliminar_ingrediente)
         self.boton_eliminar.pack(pady=10)
 
-
-
-
         # Treeview en el segundo frame
         self.tree = ttk.Treeview(frame_treeview, columns=("Ingrediente", "Cantidad"), show="headings")
         self.tree.heading("Ingrediente", text="Ingrediente")
-
-        # Treeview para ingredientes
-        self.tree = ttk.Treeview(frame_treeview, columns=("Ingediente", "Cantidad"), show="headings")
-        self.tree.heading("Ingediente", text="Ingrediente")
-
+        
         self.tree.heading("Cantidad", text="Cantidad")
         self.tree.pack(expand=True, fill="both", padx=10, pady=10)
 
@@ -102,11 +91,8 @@ class AplicacionConPestanas(ctk.CTk):
 
         # Cargar la imagen
         image_Papas = ctk.CTkImage(Image.open("IMG/Comida4.png"), size=(100, 100))
-        # Crear un botón con imagen
-
         
-
-
+        # Crear un botón con imagen
         self.precios = {
             "Papas Fritas": 500,
             "Pepsi": 1100,
@@ -152,11 +138,20 @@ class AplicacionConPestanas(ctk.CTk):
         self.boton_Elimenu.configure(command=self.eliminar_ingrediente) 
         self.boton_Elimenu.pack(pady=10)
 
-        self.boton_pdf = ctk.CTkButton(frame_treeview2, text="Generar Boleta", fg_color="green", text_color="white")
+        self.boton_pdf = ctk.CTkButton(frame_treeview2, text="Generar Boleta", fg_color="green", text_color="white", command=self.generar_pdf)
         self.boton_pdf.pack(pady=10)
 
 
-
+    def generar_pdf(self):
+        pedidos = []
+        for item in self.tree_pedido.get_children():
+            pedido = self.tree_pedido.item(item)["values"]
+            pedidos.append(pedido)
+        
+        generador = GeneradorPDF(pedidos)
+        generador.generar_pdf()
+        
+        CTkMessagebox(title="PDF Generado", message="La boleta ha sido generada exitosamente.", icon="check")
 
     def agregar_pedido(self, pedido):
         precio = self.precios[pedido]
