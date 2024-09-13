@@ -52,13 +52,13 @@ class AplicacionConPestanas(ctk.CTk):
         frame_treeview.pack(side="right", fill="both", expand=True, padx=10, pady=10)
 
         # Formulario Nombre del ingrediente
-        label_ingediente = ctk.CTkLabel(frame_formulario, text="Nombre del Ingrediente")
+        label_ingediente = ctk.CTkLabel(frame_formulario, text="")
         label_ingediente.pack(pady=2)
         self.entry_ingediente = ctk.CTkEntry(frame_formulario, placeholder_text="Ingrediente")
         self.entry_ingediente.pack(pady=2)
 
         # Formulario cantidad
-        label_cantidad = ctk.CTkLabel(frame_formulario, text="Cantidad")
+        label_cantidad = ctk.CTkLabel(frame_formulario, text="")
         label_cantidad.pack(pady=2)
         self.entry_cantidad = ctk.CTkEntry(frame_formulario, placeholder_text="Cantidad")
         self.entry_cantidad.pack(pady=2)
@@ -330,9 +330,6 @@ class AplicacionConPestanas(ctk.CTk):
         # Agregar todos los ingredientes de la biblioteca al Treeview
         for ingrediente in self.inventario.obtener_ingredientes():
             self.tree.insert("", "end", values=(ingrediente.nombre, ingrediente.cantidad))
-
-    """for item in tree.get_children():
-        print(tree.item(item)["values"])"""
 
     def generar_menu(self):
         # Limpiar los datos anteriores
